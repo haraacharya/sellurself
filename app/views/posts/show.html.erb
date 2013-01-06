@@ -1,19 +1,13 @@
-<h4>Show Post:</h4>
+<h4><%= link_to @post.title, @post.url %> for $ <strong><%= @post.price %></strong></span></h4> 
 
-<%= link_to @post.title, @post.url %> for $ <strong><%= @post.price %></strong><br/> 
-<%= @post.description %>	<br/>
-My Work: <%= link_to @post.url, @post.url %> <br/><br/>
+<p><h6>DESCRIPTION:</h6><%= @post.description %></p>
+My Work: <%= display_my_work(@post) %> <br/>
 
-Comments:
+<h6>COMMENTS:</h6>
 <ul>
-	<% @post.comments.reload.each do |comment| %>
-		<li>
-			<%= comment.content %>
-		</li>
-	<% end %>
+	<%= display_post_comments(@post) %>
 </ul>
 
-<h5>Add a comment:</h5>
 
 <%= form_for [@post, @comment] do |f| %>
 	<% if @comment.errors.any? %>
@@ -22,7 +16,7 @@ Comments:
 		</div>
 	<% end %>
 
-	<%= f.text_area :content, rows: 5, class: "span4", placeholder: "Add comment!" %><br/>
+	<%= f.text_area :content, rows: 5, class: "span4", placeholder: "Add a comment!" %><br/>
 	<%= f.submit "Post Comment!" %>
 <% end %>
 

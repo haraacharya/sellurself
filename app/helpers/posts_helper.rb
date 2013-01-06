@@ -11,4 +11,18 @@ module PostsHelper
 				
 	end	
 
+	def display_post_comments(post)
+		if post.comments.count <= 0
+			return "Be the first to comment!"
+		else
+			return display_comments(post)
+		end
+	end
+
+	def display_comments(post)
+		post.comments.reload.each do |comment|
+			puts comment.content 
+		end 
+	end
+
 end	
