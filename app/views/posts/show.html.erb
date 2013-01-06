@@ -1,0 +1,31 @@
+<h4>Show Post:</h4>
+
+<%= link_to @post.title, @post.url %> for $ <strong><%= @post.price %></strong><br/> 
+<%= @post.description %>	<br/>
+My Work: <%= link_to @post.url, @post.url %> <br/><br/>
+
+Comments:
+<ul>
+	<% @post.comments.reload.each do |comment| %>
+		<li>
+			<%= comment.content %>
+		</li>
+	<% end %>
+</ul>
+
+<h5>Add a comment:</h5>
+
+<%= form_for [@post, @comment] do |f| %>
+	<% if @comment.errors.any? %>
+		<div class="alert alert-error">
+			<%= @comment.errors.full_messages.join("<br/>").html_safe %>
+		</div>
+	<% end %>
+
+	<%= f.text_area :content, rows: 5, class: "span4", placeholder: "Add comment!" %><br/>
+	<%= f.submit "Post Comment!" %>
+<% end %>
+
+
+
+	

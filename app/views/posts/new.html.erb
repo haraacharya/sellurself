@@ -1,0 +1,21 @@
+<h5>SELL-UR-SELF POST:</h5>
+
+<%= form_for(@post) do |f| %>
+	<% if @post.errors.any? %>
+		<div class="alert alert-error">
+			<%= @post.errors.full_messages.join("<br/>").html_safe %>
+		</div>
+	<% end %>
+	
+	<%= f.text_field :title, class: "span4", placeholder: "e.g. Can code anything in ruby" %>
+	<div class="input-prepend">
+		<span class="add-on">for $</span>
+		<%= f.text_field :price, class: "span1", placeholder: 5 %>
+	</div>	
+	<%= f.label :description, "DESCRIBE:" %>
+	<%= f.text_area :description, class: "span4", placeholder: "Be as descriptive as possible", rows: 6 %>
+	<%= f.label :url, "SHOW YOUR WORK URL:" %>
+	<%= f.text_field :url, class: "span4", placeholder: "http://yourwork.com (optional)" %><br/>
+	<%= f.submit "Submit-ur-work!" %>
+<% end %>
+

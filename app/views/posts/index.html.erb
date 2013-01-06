@@ -1,0 +1,30 @@
+<h4><%= link_to "Create a post", new_post_path %></h4>
+
+All Posts:
+<ul style="list-style: none;">
+	<% @posts.each do |post| %>
+    	<li class="posts">
+			
+			<div class="post_left">
+				<span title="Up vote">
+					<%= link_to post_votes_path(post, :direction => "up"), :method => :post do %>
+						<div class="btn"><i class="icon-thumbs-up"></i></div>
+					<% end %>
+				</span>	
+				<span><%= post.votes.where(:direction => "up").count - post.votes.where(direction: "down").count %></span> 
+				<span title="Down vote">	
+					<%= link_to post_votes_path(post, direction: "down"), method: :post  do %>	
+						<div class="btn"><i class="icon-thumbs-down"></i></div>
+					<% end %>
+				</span>		
+			</div>
+			<div class="post_right">	
+				<%= post.title %> for $ <strong><%= post.price %></strong><br/> 
+				<%= truncate(post.description, :length => 150) %>	<br/>
+				My Work: <%= display_my_work(post) %><br/>
+				<span title="Click here for reading and adding comments">(<%= link_to pluralize(post.comments.count, "Comment"), post_path(post) %>)</span>
+			<div>	
+		</li>
+
+	<% end %>	
+</ul>	
