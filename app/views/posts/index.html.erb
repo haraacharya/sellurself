@@ -22,7 +22,7 @@ All Posts:
 				<%= post.title %> <span class="badge">for $ <strong><%= post.price %></strong></span><br/> 
 				<%= truncate(post.description, :length => 150) %>	<br/>
 				My Work: <%= display_my_work(post) %><br/>
-				<span title="Click here for reading and adding comments">(<%= link_to pluralize(post.comments.count, "Comment"), post_path(post) %>)</span>
+				<span title="Click here for reading and adding comments">(<%= link_to pluralize(post.comments.count, "Comment"), post_path(post) %>) <%= last_comment_time(post) %></span>
 			<div>	
 		</li>
 
