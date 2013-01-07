@@ -1,13 +1,14 @@
 <h4><%= link_to @post.title, @post.url %> for $ <strong><%= @post.price %></strong></span></h4> 
 
 <p><h6>DESCRIPTION:</h6><%= @post.description %></p>
-My Work: <%= display_my_work(@post) %> <br/>
+<h6>WORK URL:</h6> <%= display_my_work(@post) %> <br/>
 
 <h6>COMMENTS:</h6>
-<ul>
-	<%= display_post_comments(@post) %>
-</ul>
-
+<div class="comments">
+	<ul>
+		<%= display_post_comments(@post) %>
+	</ul>
+</div>
 
 <%= form_for [@post, @comment] do |f| %>
 	<% if @comment.errors.any? %>
