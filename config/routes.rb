@@ -6,4 +6,6 @@ TwBootstrap::Application.routes.draw do
   	resources :votes, only: [:create]
   end
 
+  match "/search", :to => "search#index"
+
 end

@@ -1,6 +1,6 @@
-All Posts:
+Search result: <%= pluralize(@results.count, "post") %> found.<br/><br/>
 <ul style="list-style: none;">
-	<% @posts.each do |post| %>
+	<% @results.each do |post| %>
     	<li class="posts">
 			
 			<div class="post_left">

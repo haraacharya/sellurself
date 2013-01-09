@@ -40,9 +40,9 @@ module PostsHelper
 		if post.comments.count > 0
 			inhrs = ((Time.now - post.comments.order("created_at DESC").first.created_at)/3600).round
 			if inhrs < 24
-				return "Last comment " + pluralize(inhrs.to_s, "hr") + " ago..." 
+				return "Last comment: " + pluralize(inhrs.to_s, "hr") + " ago..." 
 			else
-				return "Last comment " + pluralize((inhrs / 24).to_s ,"day") + " ago..." 
+				return "Last comment: " + pluralize((inhrs / 24).to_s ,"day") + " ago..." 
 			end	
 		else
 			return link_to "Be the first to comment!", post_path(post)	
