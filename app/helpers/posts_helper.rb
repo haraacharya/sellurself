@@ -29,7 +29,7 @@ module PostsHelper
 		else
 			str = ""
 			post.comments.reload.order("created_at DESC").each do |comment|
-				str << "<li>" + comment.content + "</li>"
+				str << "<li>" + comment.content + "<br/>Commented by: " + User.where(:id => comment.user_id).first.firstname.to_s + "</li>"
 			end 
 			return str.html_safe
 		end

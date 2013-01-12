@@ -10,17 +10,21 @@
 	</ul>
 </div>
 
-<%= form_for [@post, @comment] do |f| %>
-	<% if @comment.errors.any? %>
-		<div class="alert alert-error">
-			<%= @comment.errors.full_messages.join("<br/>").html_safe %>
-		</div>
+<% if logged_in? %>
+	<%= form_for [@post, @comment] do |f| %>
+		<% if @comment.errors.any? %>
+			<div class="alert alert-error">
+				<%= @comment.errors.full_messages.join("<br/>").html_safe %>
+			</div>
+		<% end %>
+
+		<%= f.text_area :content, rows: 5, class: "span4", placeholder: "Add a comment!" %><br/>
+		<%= f.hidden_field :user_id, :value => session[:user].id %>
+		<%= f.submit "Post Comment!" %>
 	<% end %>
-
-	<%= f.text_area :content, rows: 5, class: "span4", placeholder: "Add a comment!" %><br/>
-	<%= f.submit "Post Comment!" %>
+<% else %>
+	<p>Please <%= link_to "Sign in", login_path %> or <%= link_to "Register", "/register" %> to add Comments.</p>
 <% end %>
-
 
 
 	

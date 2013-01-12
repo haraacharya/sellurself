@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-	helper_method :current_user, :logged_in?, :create_post_handler
+	helper_method :current_user, :logged_in?, :create_post_handler, :create_comments_handler
 	protect_from_forgery
 
 	def current_user
@@ -15,8 +15,12 @@ class ApplicationController < ActionController::Base
 		if !logged_in?
 			session[:create_post_clicked] = true
 			redirect_to login_path
-		else
-				
+		end
+	end
+
+	def create_comments_handler
+		if !logged_in?
+			redirect_to login_path
 		end
 	end
 
