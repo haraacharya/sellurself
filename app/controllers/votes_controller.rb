@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
 
 	def create
-		@post = Post.find(params[:post_id])
+		@post = Post.where(:id => params[:post_id]).first
 		@votes = @post.votes.create(direction: params[:direction])
 
 		if @votes.valid?

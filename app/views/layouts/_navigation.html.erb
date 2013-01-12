@@ -13,6 +13,17 @@
     		<%= submit_tag "Search", class: "btn btn-primary" %>
     	<% end %>
     </li>
+
+    <li class="divider-vertical"></li>
+    
+    <% if logged_in? %>
+        <li style="padding: 10px 15px;">Welcome <%= session[:user].firstname %></li>
+        <li><%= link_to "Logout", logout_path %></li>
+    <% else %>
+        <li><%= link_to "Sign up", "/register" %></li>  
+        <li><%= link_to "Sign in", login_path %></li>  
+    <% end %>        
+
 </ul>    
 
 

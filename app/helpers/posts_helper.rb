@@ -49,4 +49,10 @@ module PostsHelper
 		end	
 	end
 
+
+	def find_user_details(post)
+		@user = User.find_by_id(post.user_id)
+	end	
+
+
 end	

@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+
+	before_filter :create_post_handler, only: [:create, :new]
 	
 	def index
 		@posts = Post.all
