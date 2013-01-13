@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
 
-	helper_method :current_user, :logged_in?, :create_post_handler, :create_comments_handler
+	helper_method :current_user, :logged_in?, :create_post_handler, :create_comments_handler, :find_user_details_from_session_id
 	protect_from_forgery
 
 	def current_user
-		session[:user]
+		session[:user_id]
 	end
 
 	def logged_in?
@@ -29,5 +29,10 @@ class ApplicationController < ActionController::Base
 			redirect_to root_path, notice: "You need to login to perform this!"
 		end	
 	end
+
+	def find_user_details_from_session_id
+		user_details = Array.new
+		user_details << User.find(session[:user_id]).firstname << User.find(session[:user_id]).username
+	end 
 
 end

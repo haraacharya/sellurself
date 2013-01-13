@@ -19,7 +19,7 @@
 		<% end %>
 
 		<%= f.text_area :content, rows: 5, class: "span4", placeholder: "Add a comment!" %><br/>
-		<%= f.hidden_field :user_id, :value => session[:user].id %>
+		<%= f.hidden_field :user_id, :value => session[:user_id] %>
 		<%= f.submit "Post Comment!" %>
 	<% end %>
 <% else %>

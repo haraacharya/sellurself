@@ -17,7 +17,7 @@
     <li class="divider-vertical"></li>
     
     <% if logged_in? %>
-        <li style="padding: 10px 15px;">Welcome <%= session[:user].firstname %></li>
+        <li style="padding: 10px 15px;">Welcome <%= find_user_details_from_session_id()[0] %></li>
         <li><%= link_to "Logout", logout_path %></li>
     <% else %>
         <li><%= link_to "Sign up", "/register" %></li>  
