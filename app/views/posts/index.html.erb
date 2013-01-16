@@ -1,31 +1,14 @@
+<div class="sidebar">
+	SEARCH BY CATEGORY:<br/>
+	<ul style="list-style: none;">
+		<%= display_category %>
+	</ul>
+</div>	
+
 All Posts:
 <ul style="list-style: none;">
 	<% @posts.each do |post| %>
-    	<li class="posts">
-			
-			<div class="post_left">
-				<span title="Up vote">
-					<%= link_to post_votes_path(post, :direction => "up"), :method => :post do %>
-						<div class="btn"><i class="icon-thumbs-up"></i></div>
-					<% end %>
-				</span>	
-				<span><%= post.votes.where(:direction => "up").count - post.votes.where(direction: "down").count %></span> 
-				<span title="Down vote">	
-					<%= link_to post_votes_path(post, direction: "down"), method: :post  do %>	
-						<div class="btn"><i class="icon-thumbs-down"></i></div>
-					<% end %>
-				</span>		
-			</div>
-			<div class="post_right">	
-				<%= post.title %> <span class="badge badge-info">for $ <strong><%= post.price %></strong></span><br/> 
-				<%= truncate(post.description, :length => 150) %><br/>
-				My Work: <%= display_my_work(post) %><br/>
-				Email: <%= find_user_details(post).username %> 
-				<span title="Click here for reading and adding comments">
-					(<%= link_to pluralize(post.comments.count, "Comment"), post_path(post) %>) <%= last_comment_time(post) %>
-				</span>
-			<div>	
-		</li>
-
+    	<%= render "shared/show_posts", :post => post %>
 	<% end %>	
 </ul>	
+

@@ -1,0 +1,24 @@
+<h4>My Account:</h4>
+<p>The username I logged in with: <strong><%= current_user.username %></strong></p>
+<p>Account created on: <strong><%= localize(current_user.created_at, :format => :long) %></strong></p>
+
+<h4>Most recent posts:</h4>
+<ul style="list-style: none;">
+	<% @posts.each do |post| %>
+    	<li><%= link_to post.title, post_path(post) %></li>
+	<% end %>	
+</ul>	
+
+<h4>Most recent comments:</h4>
+<ul style="list-style: none;">
+	<% @comments.each do |comment| %>
+    	<li><%= link_to comment.content, post_path(comment.post) %></li>
+	<% end %>	
+</ul>	
+
+<h4>Most recent votes:</h4>
+<ul style="list-style: none;">
+	<% @votes.each do |vote| %>
+    	<li>Voted <%= vote.direction %> for <%= link_to vote.post.title, post_path(vote.post) %></li>
+	<% end %>	
+</ul>	

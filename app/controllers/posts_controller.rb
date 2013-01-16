@@ -6,8 +6,13 @@ class PostsController < ApplicationController
 		@posts = Post.all
 	end	
 
+	def by_category
+		
+	end
+
 	def new
 		@post = Post.new
+		@category = Category.all
 	end
 
 	def show
@@ -16,14 +21,12 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		@post = Post.create(params[:post])
-
-		if @post.valid?
-			flash[:notice] = "Posted successfully"
-			redirect_to root_path
+		@post = Post.new(params[:post])
+		@post.user = current_user
+		if @post.save
+			redirect_to root_path, notice: "Posted successfully"
 		else
-			render action: "new"
+			render "new"
 		end	
-
 	end
 end	

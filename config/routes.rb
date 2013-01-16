@@ -6,7 +6,11 @@ TwBootstrap::Application.routes.draw do
   	resources :votes, only: [:create]
   end
 
+  resources :categories, only: [:create, :new]
+  get :categories, to: "categories#index", as: "/categories"
+  
   resources :users, only: [:create, :new]
+  get :profile, to: "users#show", as: "/profile"
   get :register, to: "users#new", as: "register"
 
   get :login, to: "sessions#new", as: "login"

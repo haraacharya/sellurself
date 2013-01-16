@@ -12,13 +12,16 @@
 		<div class="input-prepend">
 			<span class="add-on">for $</span>
 			<%= f.text_field :price, class: "span1", placeholder: 5 %>
+		</div>
+		<div class="input-prepend">
+			<span class="add-on">in category</span>
+			<%= f.collection_select(:category_id, Category.all, :id, :name) %>
 		</div>	
 		<%= f.label :description, "DESCRIBE:" %>
 		<%= f.text_area :description, class: "span4", placeholder: "Be as descriptive as possible", rows: 6 %>
 		<%= f.label :url, "SHOW YOUR WORK URL:" %>
 		<%= f.text_field :url, class: "span4", placeholder: "http://yourwork.com (optional)" %><br/>
-		<%= f.hidden_field :user_id, :value => session[:user_id] %>
-		<%= f.submit "Submit-ur-work!" %>
+		<%= f.submit "Submit-ur-work!", class: "btn" %>
 	<% end %>
 <% else %>
 	<% create_post_handler %>

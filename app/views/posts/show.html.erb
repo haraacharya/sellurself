@@ -2,13 +2,16 @@
 
 <p><h6>DESCRIPTION:</h6><%= @post.description %></p>
 <h6>WORK URL:</h6> <%= display_my_work(@post) %> <br/>
+<p>
+Contact email: <%= find_user_details(@post).username %> 
+</p>
 
 <h6>COMMENTS:(<%= @post.comments.count %>)</h6>
-<div class="comments">
-	<ul>
-		<%= display_post_comments(@post) %>
-	</ul>
-</div>
+
+
+<ul>
+	<%= display_post_comments(@post) %>
+</ul>
 
 <% if logged_in? %>
 	<%= form_for [@post, @comment] do |f| %>
@@ -19,7 +22,6 @@
 		<% end %>
 
 		<%= f.text_area :content, rows: 5, class: "span4", placeholder: "Add a comment!" %><br/>
-		<%= f.hidden_field :user_id, :value => session[:user_id] %>
 		<%= f.submit "Post Comment!" %>
 	<% end %>
 <% else %>

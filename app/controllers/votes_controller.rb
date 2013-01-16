@@ -1,15 +1,13 @@
 class VotesController < ApplicationController
 
+	before_filter :vote_handler, only: [:create]
+
 	def create
 		@post = Post.where(:id => params[:post_id]).first
-		@votes = @post.votes.create(direction: params[:direction])
-
-		if @votes.valid?
-			flash[:notice] = "Voted successfully!"
-			redirect_to root_path
-		else
-			flash[:notice] = "Voting system has some issues...please try after sometime."
-			redirect_to root_path
+		@vote = @post.votes.new(direction: params[:direction])
+		@vote.user = current_user
+		if @vote.save
+			redirect_to root_path, notice: "Voted successfully!"
 		end
 	end
 

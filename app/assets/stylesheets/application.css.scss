@@ -13,8 +13,12 @@
 */
 @import "bootstrap";
 
+html,body{
+	height: 100%
+}
+
 body {
-	padding-top: 60px;
+	padding-top: 70px;
 }
 
 @import "bootstrap-responsive";
@@ -24,10 +28,16 @@ a:hover {
 }
 
 .posts{
+	width: 75%;
 	overflow: auto;
 	border-top: 1px solid $grayLighter;
 	border-bottom: 1px solid $grayLighter;
 	padding: 8px 0;
+	float:left;
+}
+.sidebar{
+	float:right;
+	width: 15%;
 }
 
 .post_left{
