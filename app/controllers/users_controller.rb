@@ -16,9 +16,24 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@posts = Post.where(:user_id => current_user.id).limit(10).order("created_at DESC")
-		@comments = Comment.where(:user_id => current_user.id).limit(5).order("created_at DESC")
-		@votes = Vote.where(:user_id => current_user.id).limit(10).order("created_at DESC")
+		@user = User.find(params[:id])
+		#@posts = Post.where(:user_id => current_user.id).limit(10).order("created_at DESC")
+		@posts = Post.where(:user_id => @user).limit(10).order("created_at DESC")
+		@comments = Comment.where(:user_id => @user).limit(5).order("created_at DESC")
+		@votes = Vote.where(:user_id => @user).limit(10).order("created_at DESC")
+	end
+
+	def edit
+	
+	end
+
+	def update
+		@user = User.find(params[:id])
+		if @user.update_attributes(params[:user])
+			redirect_to user_path(current_user), notice: "Updated successfully"
+		else
+			render "edit", error: "There might be some problem updating it now"
+		end		
 	end
 
 end

@@ -1,6 +1,12 @@
-<h4>My Account:</h4>
-<p>The username I logged in with: <strong><%= current_user.username %></strong></p>
-<p>Account created on: <strong><%= localize(current_user.created_at, :format => :long) %></strong></p>
+<h4 class="pull-left">Activity details:</h4> 
+<% if current_user.id == @user.id  %>
+	<h4 class="pull-right btn btn-small"><%= link_to "Change Account Settings", edit_user_path(current_user) %></h4> 
+<% end %>
+<div class="clearfix"></div>
+<br/>
+
+<p>The username logged in with: <strong><%= @user.username %></strong></p>
+<p>Account created on: <strong><%= localize(@user.created_at, :format => :long) %></strong></p>
 
 <h4>Most recent posts:</h4>
 <ul style="list-style: none;">
@@ -21,4 +27,14 @@
 	<% @votes.each do |vote| %>
     	<li>Voted <%= vote.direction %> for <%= link_to vote.post.title, post_path(vote.post) %></li>
 	<% end %>	
-</ul>	
+</ul>
+
+<% if @user.twitter? %>
+	<h4>Tweets by <%= @user.twitter.to_s %>:</h4>	
+
+	<ul>
+		<% Twitter.user_timeline(@user.twitter).each do |status| %>
+			<li><%= status.text %></li>
+		<% end %>
+	</ul>	
+<% end %>

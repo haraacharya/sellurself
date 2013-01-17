@@ -8,14 +8,18 @@
 
 
 <%= form_for @user do |f| %>
-	<%= f.text_field :firstname, class: "span3",placeholder: "Firstname" %>
+	<%= f.text_field :firstname, class: "span3",placeholder: "FIRSTNAME" %>
 	<br/>
-	<%= f.text_field :lastname, class: "span3", placeholder: "Lastname" %>
+	<%= f.text_field :lastname, class: "span3", placeholder: "LASTNAME" %>
 	<br/>
-	<%= f.text_field :username, class: "span3", placeholder: "Email" %>
+	<%= f.text_field :username, class: "span3", placeholder: "EMAIL(USERNAME)" %>
 	<br/>
 	<%= f.password_field :password, class: "span3", placeholder: "Password" %>
 	<br/>
+	<br/>
+	<%= f.label :twitter, "Twitter-username(optional)" %>
+	<%= f.text_field :twitter, class: "span3", placeholder: "Twitter-handle" %>
+	<br/>
 
-	<%= f.submit "Register!", class: "btn" %> 
+	<%= f.submit "Register!", class: "btn btn-large btn-primary" %> 
 <% end %>

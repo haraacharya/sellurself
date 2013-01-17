@@ -16,7 +16,7 @@
 		<%= post.title %> <span class="badge badge-info">for $ <strong><%= post.price %></strong></span><br/> 
 		<%= truncate(post.description, :length => 150) %><br/>
 		My Work: <%= display_my_work(post) %><br/>
-		Email: <%= find_user_details(post).username %> 
+		By: <%= link_to find_user_details(post).firstname, user_path(post.user_id) %> Email: <%= find_user_details(post).username %> 
 		<span title="Click here for reading and adding comments">
 			(<%= link_to pluralize(post.comments.count, "Comment"), post_path(post) %>) <%= last_comment_time(post) %>
 			(Category: <%= post.category.name %>)

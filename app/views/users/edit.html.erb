@@ -1,0 +1,19 @@
+<h4>Update details:</h4>
+
+<%= form_for current_user, url: user_path(current_user), method: "put" do |f| %>
+	
+	<%= f.text_field :firstname, class: "span3" %>
+	<br/>
+	<%= f.text_field :lastname, class: "span3" %>
+	<br/>
+	<%= f.text_field :username, class: "span3" %>
+	<br/>
+	<%= f.password_field :password, class: "span3", placeholder: "Password" %>
+	<br/>
+	<br/>
+	<%= f.label :twitter, "Twitter-username(optional)" %>
+	<%= f.text_field :twitter, class: "span3", placeholder: "Twitter-handle" %>
+	<br/>
+
+	<%= f.submit "Update!", class: "btn" %> 
+<% end %>
