@@ -8,6 +8,7 @@ TwBootstrap::Application.routes.draw do
 
   resources :categories, only: [:create, :new]
   get :categories, to: "categories#index", as: "/categories"
+  get :category, to: "posts#by_category"
   
   resources :users, only: [:create, :new, :show, :edit, :update]
   #get :profile, to: "users#show", as: "/profile"

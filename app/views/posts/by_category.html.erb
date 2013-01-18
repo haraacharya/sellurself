@@ -1,1 +1,9 @@
-By category:
+<%= render "shared/show_category_on_right" %>	
+
+<%= pluralize(@posts.count, "post") %> found in category: (<%= @category.name %>):<br/><br/>
+<ul style="list-style: none;">
+	<% @posts.each do |post| %>
+    	<%= render "shared/show_posts", :post => post %>
+	<% end %>	
+</ul>	
+

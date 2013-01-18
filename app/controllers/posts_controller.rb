@@ -4,10 +4,13 @@ class PostsController < ApplicationController
 	
 	def index
 		@posts = Post.all
+		@categories = Category.all
 	end	
 
 	def by_category
-		
+		@categories = Category.all
+		@category = Category.where(:name => params[:category]).first
+		@posts = @category.posts.all
 	end
 
 	def new

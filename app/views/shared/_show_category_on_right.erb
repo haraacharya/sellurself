@@ -1,0 +1,9 @@
+<div class="pull-right hero-unit">
+	Search by category:<br/>
+	<ul>
+		<% @categories.each do |category| %>
+			<li><%= link_to category.name, controller: 'posts', action: 'by_category', category: category.name %></li>
+		<% end %>
+	</ul>
+	Don't see the category?<br/> <%= link_to '<div class="btn">Create one</div>'.html_safe, categories_path %>
+</div>
