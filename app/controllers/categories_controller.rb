@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
 	
+	before_filter :require_login
+
 	def index
 		@category = Category.new
 		@categories = Category.all

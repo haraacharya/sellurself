@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
 
 	def require_login
 		if !logged_in?
-			redirect_to root_path, notice: "You need to login to perform this!"
+			redirect_to root_path, notice: "You need to <a href='/login'>login</a> or <a href='/register'>register</a> to be able to vote".html_safe
 		end	
 	end
 
