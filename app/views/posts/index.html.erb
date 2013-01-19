@@ -2,8 +2,12 @@
 
 All Posts:
 <ul style="list-style: none;">
-	<% @posts.each do |post| %>
+	<% @posts.sort_by(&:vote_number).reverse.map do |post| %>
     	<%= render "shared/show_posts", :post => post %>
 	<% end %>	
 </ul>	
+
+
+
+
 

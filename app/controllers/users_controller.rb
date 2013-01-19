@@ -8,11 +8,16 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(params[:user])
-		if @user.save
-			redirect_to login_path, notice: "Registered Successfully..."
+		if User.where(username: @user.username).first.nil?
+			if @user.save
+				redirect_to login_path, notice: "Registered Successfully..."
+			else
+				render action: :new, error: "Registration failed"
+			end	
 		else
-			render action: :new, error: "Registration failed"
+			render :new, error: "username is already being taken!"
 		end	
+		
 	end
 
 	def show

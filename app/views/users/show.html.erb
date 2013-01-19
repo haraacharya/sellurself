@@ -34,7 +34,7 @@
 
 	<ul>
 		<% Twitter.user_timeline(@user.twitter).each do |status| %>
-			<li><%= status.text %></li>
+			<li><%= link_to status.text, "http://twitter.com/#{@user.twitter.to_s}/status/#{status.id}", target: "_blank" %></li>
 		<% end %>
 	</ul>	
 <% end %>

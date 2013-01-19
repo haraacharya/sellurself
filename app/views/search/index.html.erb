@@ -1,3 +1,5 @@
+<%= render "shared/show_category_on_right" %>
+
 Search result: <%= pluralize(@results.count, "post") %> found.<br/><br/>
 <ul style="list-style: none;">
 	<% @results.each do |post| %>

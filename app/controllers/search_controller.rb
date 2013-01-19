@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
 	
 	def index
+		@categories = Category.all
 		if params[:search].length > 0
 			@results = Search.find_by_search_string(params[:search])
 			
