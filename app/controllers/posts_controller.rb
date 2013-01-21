@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
 	def by_category
 		@categories = Category.all
-		@category = Category.where(:name => params[:category]).first
+		@category = Category.where(:name => params[:type]).first
 		@posts = @category.posts.all
 	end
 
